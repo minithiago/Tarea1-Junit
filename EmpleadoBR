@@ -1,0 +1,48 @@
+public class EmpleadoBR {
+
+    public static float calculaSalarioBruto(TipoEmpleado tipus,float ventasMes,float horasExtras){
+        float salarioBase = 0;
+        if(ventasMes<0){
+            return -1;
+        }
+        if (tipus == null){
+            return -1;
+        }
+        if (tipus.equals(TipoEmpleado.venedor)){
+            salarioBase = 1000;
+        }
+        if (tipus.equals(TipoEmpleado.encarregat)){
+            salarioBase = 1500;
+        }
+        if(ventasMes>=1000 && ventasMes<1500){
+            salarioBase += 100;
+        }
+        if(ventasMes>=1500){
+            salarioBase += 200;
+        }
+        if(horasExtras>=0){
+            salarioBase += horasExtras*20;
+        }else {
+            return -1;
+        }
+
+
+        float salarioBruto = salarioBase;
+        return salarioBruto;
+
+    }
+    public static float calculaSalarioNeto(float salarioBruto){
+        float salarioNeto = salarioBruto;
+        if (salarioBruto>=1000 && salarioBruto<1500){
+             salarioNeto = (float) (salarioBruto * 0.84);
+        }
+        if (salarioBruto>=1500){
+            salarioNeto = (float) (salarioBruto * 0.82);
+        }
+        if(salarioBruto<0){
+            return -1;
+        }
+        return salarioNeto;
+
+    }
+}
